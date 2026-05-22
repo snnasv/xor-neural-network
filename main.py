@@ -21,7 +21,7 @@ def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
 
-def sigmoid_grad(x): # inatçılık seviyesi verilen cevap ne kadar kesi ise türevi de o kadar düşüktür yani kararından kolay kolay vaz geçmez
+def sigmoid_grad(x): 
     return x * (1 - x)
 
 
@@ -47,10 +47,10 @@ for epoch in range (10000):
 
 
     error = y - guess
-    output_delta = error * sigmoid_grad(guess) #ceza verme formulü
+    output_delta = error * sigmoid_grad(guess) 
     
 
-    hidden_error = np.dot(output_delta, W2.T) #W2 de hangi nöronun bu hataya ne kadar suçu varsa bununla otomatik belirliyoruz ki hidden layera ceza keselim
+    hidden_error = np.dot(output_delta, W2.T)  
 
 
     hidden_delta = hidden_error * sigmoid_grad(hidden_layer_output)
@@ -62,7 +62,7 @@ for epoch in range (10000):
     b2 += np.sum(output_delta, axis=0, keepdims=True)
     b1 += np.sum(hidden_delta, axis=0, keepdims=True)
 
-    print("Eğitim Sonucu (Ağın Tahminleri):")
+    print("Guesses")
     print(guess)
 
 
